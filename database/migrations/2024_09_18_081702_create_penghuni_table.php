@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengghuni', function (Blueprint $table) {
+        Schema::create('penghuni', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('kamar_id');
@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('no_wa_ortu');
             $table->dateTime('tgl_masuk');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('kamar_id')->references('id')->on('kamar')->onDelete('cascade');
         });
     }
 
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengghuni');
+        Schema::dropIfExists('penghuni');
     }
 };

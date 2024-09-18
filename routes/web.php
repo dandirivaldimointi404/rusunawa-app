@@ -37,6 +37,16 @@ Route::resource('kamar', KamarController::class);
 Route::resource('tagihan', TagihanController::class);
 Route::resource('pelunasan', PelunasanController::class);
 
+// Route::post('/send-sms', [TagihanController::class, 'sendSms']);
+// Route::post('/send-sms', [TagihanController::class, 'sendSms'])->name('send-sms');
+// Route::post('/send-whatsapp', [TagihanController::class, 'sendWhatsAppMessage']);
+Route::post('/send-whatsapp', [TagihanController::class, 'sendWhatsAppMessage'])->name('send.whatsapp');
+
+// Route::post('/updatepesanan', [TagihanController::class, 'updatepesanan'])->name('updatepesanan');
+
+
+Route::post('/send-whatsapp', [TagihanController::class, 'sendMessage'])->name('send.whatsapp');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

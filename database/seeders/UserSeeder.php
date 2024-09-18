@@ -20,5 +20,12 @@ class UserSeeder extends Seeder
             'level' => 'admin',
             'password' => Hash::make('password'),
         ]);
+
+        User::create([
+            'name' => 'Penghuni',
+            'username' => 'penghuni123',
+            'level' => 'penghuni',
+            'password' => Hash::make('password'),
+        ]);
     }
 }

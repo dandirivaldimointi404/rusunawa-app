@@ -3,13 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tagihan;
+use App\Services\TwilioService;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class TagihanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+    protected $twilio;
+
+    public function __construct(TwilioService $twilio)
+    {
+        $this->twilio = $twilio;
+    }
 
     public function index()
     {
@@ -66,5 +76,49 @@ class TagihanController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+
+    // public function sendMessage(Request $request)
+    // {
+    //     $validated = $request->validate([
+    //         'number' => '',
+    //         'message' => '',
+    //     ]);
+
+    //     $number = $validated['number'];
+    //     $message = $validated['message'];
+
+    //     // Kirim data ke aplikasi Node.js (Baileys) melalui HTTP request
+    //     $response = Http::post('http://localhost:3000/send', [
+    //         'number' => $number,
+    //         'message' => $message,
+    //     ]);
+
+    //     return response()->json([
+    //         'success' => $response->successful(),
+    //         'message' => $response->body(),
+    //     ]);
+    // }
+
+    public function sendWhatsAppMessage(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'to' => 'required|regex:/^\+?[1-9]\d{1,14}$/',
+        ]);
+
+        $to = $request->input('to');
+        $message = "Pesan otomatis yang telah diatur.";
+
+        try {
+            // Kirim pesan WhatsApp menggunakan Twilio
+            $this->twilio->sendWhatsAppMessage($to, $message);
+
+            return response()->json(['status' => 'Message sent successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'Failed to send message', 'error' => $e->getMessage()], 500);
+        }
     }
 }

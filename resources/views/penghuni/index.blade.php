@@ -51,7 +51,8 @@
                                                 <td>{{ $item->alamat }}</td>
                                                 <td>{{ $item->no_wa_pribadi }}</td>
                                                 <td>{{ $item->no_wa_ortu }}</td>
-                                                <td>{{ $item->tgl_masuk }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($item->tgl_masuk)->format('d M Y H:i') }}</td>
+
 
                                                 <td class="text-center">
                                                     <form action="{{ route('penghuni.destroy', $item->id) }}" method="POST"
