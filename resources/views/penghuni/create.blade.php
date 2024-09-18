@@ -39,11 +39,10 @@
                                             @enderror
                                         </div>
                                         <div class="form-group col-lg-6">
-                                            <label for="exampleInputEmail1">Username</label>
+                                            <label for="exampleInputEmail1">NIM</label>
                                             <input type="text"
                                                 class="form-control @error('username') is-invalid @enderror" id="username"
-                                                name="username" placeholder="Masukan Username"
-                                                value="{{ old('username') }}">
+                                                name="username" placeholder="Masukan NIM" value="{{ old('username') }}">
                                             @error('username')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -59,7 +58,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="form-group col-lg-6">
+                                        <div class="form-group col-lg-6" hidden>
                                             <label>Level</label>
                                             <select class="form-control" style="width: 100%;" name="level" id="level"
                                                 disabled>
@@ -76,8 +75,18 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
+                                        <div class="form-group col-lg-6">
+                                            <label for="no_wa_ortu">No WA Orang Tua</label>
+                                            <input type="number"
+                                                class="form-control @error('no_wa_ortu') is-invalid @enderror"
+                                                id="no_wa_ortu" name="no_wa_ortu" placeholder="No WA Orang Tua"
+                                                value="{{ old('no_wa_ortu') }}">
+                                            @error('no_wa_ortu')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
-                                    <div class="row">
+                                    {{-- <div class="row">
                                         <div class="form-group col-lg-6">
                                             <label for="no_wa_pribadi">No WA Pribadi</label>
                                             <input type="number"
@@ -98,7 +107,7 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="row">
                                         <div class="form-group col-lg-6">
                                             <label for="tgl_masuk">Tanggal Masuk</label>

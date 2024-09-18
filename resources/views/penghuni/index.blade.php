@@ -31,7 +31,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Username</th>
+                                            <th>NIM</th>
                                             <th>Nama Penghuni</th>
                                             <th>Kamar</th>
                                             <th>Alamat</th>
