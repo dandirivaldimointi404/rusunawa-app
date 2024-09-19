@@ -39,7 +39,7 @@ class PenghuniController extends Controller
     {
         $validatedData = $request->validate([
             'name' => '',
-            'username' => '',
+            'username' => 'required|string|unique:users,username|max:255',
             'password' => '',
             'nama_penghuni' => '',
             'alamat' => '',
@@ -47,6 +47,8 @@ class PenghuniController extends Controller
             'no_wa_ortu' => '',
             'tgl_masuk' => '',
             'kamar_id' => '',
+        ], [
+            'username.unique' => 'NIM sudah digunakan.',
         ]);
 
         $user = User::create([
