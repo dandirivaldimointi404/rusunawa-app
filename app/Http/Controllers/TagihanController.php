@@ -39,7 +39,7 @@ class TagihanController extends Controller
             return redirect()->back()->with('error', 'Tagihan not found.');
         }
 
-        $tagihan->status = 'lunas'; // Change to 'belum lunas' if reversing the status
+        $tagihan->status = 'lunas';
         $tagihan->save();
 
         return redirect()->back()->with('success', 'Status updated successfully.');

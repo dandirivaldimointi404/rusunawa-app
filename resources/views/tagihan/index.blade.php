@@ -158,7 +158,7 @@
                                                     <input type="hidden" name="total_tagihan"
                                                         value="{{ $item->total_tagihan }}">
                                                     <input type="hidden" name="tanggal_jatuh_tempo"
-                                                        value="{{ $item->tanggal_jatuh_tempo }}"> 
+                                                        value="{{ $item->tanggal_jatuh_tempo }}">
 
                                                     <td class="text-center">
                                                         @if ($item->penghuni->no_wa_ortu)
@@ -228,5 +228,9 @@
                 });
             });
         });
+
+        function submitForm(id) {
+            document.getElementById('status-form-' + id).submit();
+        }
     </script>
 @endsection
