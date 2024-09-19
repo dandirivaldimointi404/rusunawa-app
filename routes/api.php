@@ -21,5 +21,5 @@ use Illuminate\Support\Facades\Route;
 
 // Route::post('/send-message', [TagihanController::class, 'sendMessage']);
 // Route::post('/send-sms', [TagihanController::class, 'sendSms']);
-Route::post('/send-whatsapp', [TagihanController::class, 'sendWhatsAppMessage'])->name('send.whatsapp');
+// Route::post('/send-whatsapp', [TagihanController::class, 'sendWhatsAppMessage'])->name('send.whatsapp');
 

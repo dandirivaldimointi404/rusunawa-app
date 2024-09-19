@@ -8,6 +8,9 @@ use App\Http\Controllers\PelunasanController;
 use App\Http\Controllers\PenghuniController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagihanController;
+use App\Http\Controllers\TagihanPenghuniController;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,15 +40,12 @@ Route::resource('kamar', KamarController::class);
 Route::resource('tagihan', TagihanController::class);
 Route::resource('pelunasan', PelunasanController::class);
 
-// Route::post('/send-sms', [TagihanController::class, 'sendSms']);
-// Route::post('/send-sms', [TagihanController::class, 'sendSms'])->name('send-sms');
-// Route::post('/send-whatsapp', [TagihanController::class, 'sendWhatsAppMessage']);
-Route::post('/send-whatsapp', [TagihanController::class, 'sendWhatsAppMessage'])->name('send.whatsapp');
-
-// Route::post('/updatepesanan', [TagihanController::class, 'updatepesanan'])->name('updatepesanan');
+Route::resource('tagihanpenghuni', TagihanPenghuniController::class);
+Route::post('/tagihan/update-status/{id}', [TagihanController::class, 'updateStatus']);
+Route::post('/send-whatsapp', [TagihanController::class, 'sendWhatsapp'])->name('tagihan.send');
 
 
-Route::post('/send-whatsapp', [TagihanController::class, 'sendMessage'])->name('send.whatsapp');
+// Route::post('/send-whatsapp', [TagihanController::class, 'sendMessage'])->name('send.whatsapp');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

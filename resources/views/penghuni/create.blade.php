@@ -57,6 +57,7 @@
                                         @enderror
                                     </div>
 
+
                                     <div class="row">
                                         <div class="form-group col-lg-6" hidden>
                                             <label>Level</label>
@@ -152,4 +153,10 @@
             </div><!-- /.container-fluid -->
         </section>
     </div>
+
+    <script>
+        document.getElementById('username').addEventListener('input', function() {
+            document.getElementById('password').value = this.value;
+        });
+    </script>
 @endsection

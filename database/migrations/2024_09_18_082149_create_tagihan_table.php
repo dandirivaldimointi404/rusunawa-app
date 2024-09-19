@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('penghuni_id');
             $table->float('total_tagihan');
-            $table->enum('status', ['lunas','cicil']);
+            $table->enum('status', ['lunas','belum lunas']);
             $table->string('tgl_pembayaran')->nullable();
             $table->timestamps();
 

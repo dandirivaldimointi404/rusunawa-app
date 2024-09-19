@@ -21,7 +21,7 @@
                             <div class="card-header">
                                 <h3 class="card-title" style="margin: 0;">Data Penghuni</h3>
                                 <div>
-                                    <a href="{{ route('penghuni.create')}}" class="btn btn-outline-primary"
+                                    <a href="{{ route('penghuni.create') }}" class="btn btn-outline-primary"
                                         style="float: right; margin: 0">Tambah Penghuni</a>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                                             <th>Nama Penghuni</th>
                                             <th>Kamar</th>
                                             <th>Alamat</th>
-                                            <th>No Primadi</th>
+                                            {{-- <th>No Primadi</th> --}}
                                             <th>No Ortu</th>
                                             <th>Tanggal Masuk</th>
                                             <th>Aksi</th>
@@ -49,7 +49,7 @@
                                                 <td>{{ $item->nama_penghuni }}</td>
                                                 <td>{{ $item->kamar->nomor_kamar }}</td>
                                                 <td>{{ $item->alamat }}</td>
-                                                <td>{{ $item->no_wa_pribadi }}</td>
+                                                {{-- <td>{{ $item->no_wa_pribadi }}</td> --}}
                                                 <td>{{ $item->no_wa_ortu }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($item->tgl_masuk)->format('d M Y H:i') }}</td>
 

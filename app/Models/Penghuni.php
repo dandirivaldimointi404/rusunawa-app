@@ -81,7 +81,7 @@ class Penghuni extends Model
 
                 Tagihan::create([
                     'penghuni_id' => $this->id,
-                    'status' => 'cicil',
+                    'status' => 'belum lunas',
                     'total_tagihan' => $tarifKamar,
                     'tgl_pembayaran' => null,
                 ]);

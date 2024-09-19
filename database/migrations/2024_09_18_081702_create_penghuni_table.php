@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('kamar_id');
             $table->string('nama_penghuni');
             $table->string('alamat');
-            $table->string('no_wa_pribadi');
+            $table->string('no_wa_pribadi')->nullable();
             $table->string('no_wa_ortu');
             $table->dateTime('tgl_masuk');
             $table->timestamps();

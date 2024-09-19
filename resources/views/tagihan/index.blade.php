@@ -45,7 +45,43 @@
                                                     {{ $item->penghuni->kamar->nomor_kamar }}</td>
                                                 <td>{{ $item->penghuni->nama_penghuni }}</td>
                                                 <td>Rp. {{ number_format($item->total_tagihan, 0, ',', '.') }}</td>
-                                                <td>{{ $item->status }}</td>
+                                                {{-- <td>{{ $item->status }}</td> --}}
+                                                <!-- resources/views/tagihan.blade.php -->
+                                                {{-- <td>
+                                                    <form id="status-form-{{ $item->id }}"
+                                                        action="{{ url('/tagihan/update-status/' . $item->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <select name="status" class="form-select"
+                                                            onchange="submitForm({{ $item->id }})">
+                                                            <option value="lunas"
+                                                                {{ $item->status == 'lunas' ? 'selected' : '' }}>Lunas
+                                                            </option>
+                                                            <option value="belum lunas"
+                                                                {{ $item->status == 'belum lunas' ? 'selected' : '' }}>Belum
+                                                                Lunas</option>
+                                                        </select>
+                                                    </form>
+                                                </td> --}}
+
+                                                <td class="text-center">
+                                                    <form id="status-form-{{ $item->id }}"
+                                                        action="{{ url('/tagihan/update-status/' . $item->id) }}"
+                                                        method="POST" style="display:inline;">
+                                                        @csrf
+                                                        <select name="status" class="form-control"
+                                                            onchange="submitForm({{ $item->id }})">
+                                                            <option value="belum lunas"
+                                                                {{ $item->status == 'belum lunas' ? 'selected' : '' }}>Belum
+                                                                Lunas</option>
+                                                            <option value="lunas"
+                                                                {{ $item->status == 'lunas' ? 'selected' : '' }}>Lunas
+                                                            </option>
+                                                        </select>
+                                                    </form>
+                                                </td>
+
+
 
                                                 {{-- <td class="text-center">
                                                     <button type="submit" class="btn btn-outline-success"><i class="btn-outline-primary"></i>Wa Penghuni</button>
@@ -88,20 +124,54 @@
 
 
 
-                                                <td class="text-center">
+                                                {{-- <td class="text-center">
                                                     @if ($item->penghuni->no_wa_pribadi)
                                                         <button class="btn btn-outline-success send-sms"
-                                                            data-number="{{ $item->penghuni->no_wa_pribadi }}">
-                                                            <i class="fab fa-whatsapp"></i> Wa Penghuni
-                                                        </button>
-                                                    @endif
-                                                    @if ($item->penghuni->no_wa_ortu)
-                                                        <button class="btn btn-outline-primary send-sms"
                                                             data-number="{{ $item->penghuni->no_wa_ortu }}">
-                                                            <i class="fab fa-whatsapp"></i> Wa Orang Tua
+                                                            <i class="fab fa-whatsapp"></i> No Wa Ortu
                                                         </button>
                                                     @endif
-                                                </td>
+                                                </td> --}}
+
+                                                {{-- <form action="{{ route('tagihan.send') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="jid" value="{{ $item->penghuni->no_wa_ortu }}@s.whatsapp.net">
+                                                    <td class="text-center">
+                                                        @if ($item->penghuni->no_wa_ortu)
+                                                            <button type="submit" class="btn btn-outline-success">
+                                                                <i class="fab fa-whatsapp"></i> No Wa Ortu
+                                                            </button>
+                                                        @endif
+                                                    </td>
+                                                </form> --}}
+
+                                                <form action="{{ route('tagihan.send') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="jid"
+                                                        value="{{ $item->penghuni->no_wa_ortu }}@s.whatsapp.net">
+                                                    <input type="hidden" name="lantai"
+                                                        value="{{ $item->penghuni->kamar->lantai }}">
+                                                    <input type="hidden" name="nomor_kamar"
+                                                        value="{{ $item->penghuni->kamar->nomor_kamar }}">
+                                                    <input type="hidden" name="nama_penghuni"
+                                                        value="{{ $item->penghuni->nama_penghuni }}">
+                                                    <input type="hidden" name="total_tagihan"
+                                                        value="{{ $item->total_tagihan }}">
+                                                    <input type="hidden" name="tanggal_jatuh_tempo"
+                                                        value="{{ $item->tanggal_jatuh_tempo }}"> 
+
+                                                    <td class="text-center">
+                                                        @if ($item->penghuni->no_wa_ortu)
+                                                            <button type="submit" class="btn btn-outline-success">
+                                                                <i class="fab fa-whatsapp"></i> No Wa Ortu
+                                                            </button>
+                                                        @endif
+                                                    </td>
+                                                </form>
+
+
+
+
 
                                             </tr>
                                         @endforeach
@@ -116,28 +186,45 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            // Event handler untuk tombol SMS
-            $('.send-sms').click(function() {
-                var phoneNumber = $(this).data('number'); // Ambil nomor dari data attribute
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.send-message');
 
-                // Kirim AJAX request ke backend untuk mengirim SMS
-                $.ajax({
-                    url: '{{ route('send.whatsapp') }}',
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // CSRF Token sebagai header
-                    },
-                    data: {
-                        to: phoneNumber
-                    },
-                    success: function(response) {
-                        alert(response.status); // Tampilkan pesan sukses atau gagal
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText); // Tampilkan detail error di console
-                        alert('Failed to send message');
-                    }
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const number = button.getAttribute('data-number');
+                    const message = 'Hello there!';
+
+                    // Tambahkan pesan log di console
+                    console.log('Mengirim pesan ke nomor:', number);
+                    console.log('Pesan:', message);
+
+                    fetch('/send-whatsapp', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector(
+                                    'meta[name="csrf-token"]').getAttribute('content')
+                            },
+                            body: JSON.stringify({
+                                jid: number + '@s.whatsapp.net',
+                                message: message
+                            })
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok.');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('Response:', data);
+                            alert('Message sent successfully!');
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Failed to send message. Check console for details.');
+                        });
+
                 });
             });
         });
