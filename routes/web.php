@@ -4,6 +4,7 @@ use App\Http\Controllers\AkunController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KamarController;
+use App\Http\Controllers\LoginPenghuniController;
 use App\Http\Controllers\PelunasanController;
 use App\Http\Controllers\PenghuniController;
 use App\Http\Controllers\ProfileController;
@@ -45,7 +46,10 @@ Route::post('/tagihan/update-status/{id}', [TagihanController::class, 'updateSta
 Route::post('/send-whatsapp', [TagihanController::class, 'sendWhatsapp'])->name('tagihan.send');
 
 
-// Route::post('/send-whatsapp', [TagihanController::class, 'sendMessage'])->name('send.whatsapp');
+Route::get('login-penghuni', [LoginPenghuniController::class, 'index'])->name('auth.index');
+Route::post('login-penghuni', [LoginPenghuniController::class, 'store'])->name('penghuni.login');
+Route::post('keluar', [LoginPenghuniController::class, 'keluar'])->name('keluar');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

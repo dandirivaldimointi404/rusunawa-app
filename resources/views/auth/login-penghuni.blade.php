@@ -22,14 +22,14 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="#" class="h1"><b>Login Admin</b></a>
+                <a href="#" class="h1"><b>Login Penghuni</b></a>
             </div>
             <div class="card-body">
 
-                <form action="/login" method="post">
+                <form action="{{ route('penghuni.login')}}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Masukan Username" name="username">
+                        <input type="text" class="form-control" placeholder="NIM" name="username">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
