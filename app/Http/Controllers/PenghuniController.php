@@ -97,72 +97,61 @@ class PenghuniController extends Controller
 
 
 
-     public function update(Request $request, $id)
-     {
-         // Debugging data yang diterima
-         Log::info('Request Data:', $request->all());
+    public function update(Request $request, $id)
+    {
+        $penghuni = Penghuni::with('user')->findOrFail($id);
+        // $user = User::all();
 
-         $validatedData = $request->validate([
-             'name' => 'nullable|string',
-             'username' => [
-                 'nullable',
-                 'string',
-                 Rule::unique('users', 'username')->ignore($id),
-             ],
-             'password' => 'nullable|string|min:6',
-             'nama_penghuni' => 'nullable|string',
-             'alamat' => 'nullable|string',
-             'no_wa_ortu' => 'nullable|string',
-             'tgl_masuk' => 'nullable|date',
-             'kamar_id' => 'nullable|integer',
-         ]);
+        $validatedData = $request->validate([
+            'name' => 'nullable|string',
+            'username' => [
+                'nullable',
+                'string',
+                'max:255',
+                Rule::unique('users')->ignore($penghuni->user->id),
+            ],
+            'password' => 'nullable|string|min:6',
 
-         // Update data user
-         $user = User::findOrFail($id);
+            'alamat' => '',
+            'no_wa_ortu' => '',
+            'tgl_masuk' => '',
+            'kamar_id' => '',
+        ]);
 
-         // Update hanya jika nilai berubah
-         if (!empty($validatedData['name']) && $validatedData['name'] !== $user->name) {
-             $user->name = $validatedData['name'];
-         }
+        if (isset($validatedData['name']) || isset($validatedData['username']) || isset($validatedData['password'])) {
+            $user = $penghuni->user;
 
-         if (!empty($validatedData['username']) && $validatedData['username'] !== $user->username) {
-             $user->username = $validatedData['username'];
-         }
+            if (isset($validatedData['name']) && $user->name !== $validatedData['name']) {
+                $user->name = $validatedData['name'];
+            }
 
-         // Jika password diisi dan berbeda, update password
-         if (!empty($validatedData['password'])) {
-             $user->password = Hash::make($validatedData['password']);
-         }
+            if (isset($validatedData['username']) && $user->username !== $validatedData['username']) {
+                $user->username = $validatedData['username'];
+            }
 
-         $user->save();
+            if (isset($validatedData['password']) && !empty($validatedData['password'])) {
+                $user->password = Hash::make($validatedData['password']);
+            }
 
-         // Update data penghuni
-         $penghuni = Penghuni::where('user_id', $user->id)->firstOrFail();
+            $user->save();
+        }
 
-         if (!empty($validatedData['kamar_id']) && $validatedData['kamar_id'] !== $penghuni->kamar_id) {
-             $penghuni->kamar_id = $validatedData['kamar_id'];
-         }
 
-         if (!empty($validatedData['nama_penghuni']) && $validatedData['nama_penghuni'] !== $penghuni->nama_penghuni) {
-             $penghuni->nama_penghuni = $validatedData['nama_penghuni'];
-         }
+        // $penghuni->fill($validatedData);
+        $penghuni->fill(array_filter([
+            'nama_penghuni' => $validatedData['nama_penghuni'] ?? $penghuni->nama_penghuni,
+            'alamat' => $validatedData['alamat'] ?? $penghuni->alamat,
+            'no_wa_ortu' => $validatedData['no_wa_ortu'] ?? $penghuni->no_wa_ortu,
+            'tgl_masuk' => $validatedData['tgl_masuk'] ?? $penghuni->tgl_masuk,
+            'kamar_id' => $validatedData['kamar_id'] ?? $penghuni->kamar_id,
+        ]));
 
-         if (!empty($validatedData['alamat']) && $validatedData['alamat'] !== $penghuni->alamat) {
-             $penghuni->alamat = $validatedData['alamat'];
-         }
+        $penghuni->save();
 
-         if (!empty($validatedData['no_wa_ortu']) && $validatedData['no_wa_ortu'] !== $penghuni->no_wa_ortu) {
-             $penghuni->no_wa_ortu = $validatedData['no_wa_ortu'];
-         }
+        return redirect()->route('penghuni.index')->with('success', 'Data penghuni telah diperbarui.');
+    }
 
-         if (!empty($validatedData['tgl_masuk']) && $validatedData['tgl_masuk'] !== $penghuni->tgl_masuk) {
-             $penghuni->tgl_masuk = $validatedData['tgl_masuk'];
-         }
 
-         $penghuni->save();
-
-         return redirect()->route('penghuni.index')->with('success', 'Data penghuni telah diperbarui.');
-     }
 
 
 

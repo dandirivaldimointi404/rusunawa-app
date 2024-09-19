@@ -27,7 +27,7 @@
                             <!-- form start -->
                             <form action="{{ route('penghuni.update', $penghuni->id) }}" method="post">
                                 @csrf
-                                @method('PUT') <!-- Menggunakan method PUT untuk update data -->
+                                @method('PUT')
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="form-group col-lg-6">
