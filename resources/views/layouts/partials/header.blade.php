@@ -8,23 +8,20 @@
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                <img src="{{ asset('assets/dist/img/user2-160x160.jpg')}}" class="user-image img-circle elevation-2"
+                <span class="d-none d-md-inline" style="margin-right: 10px; color:black">{{Auth::user()->name}}</span>
+                <img src="{{ asset('assets/dist/img/hijab.png')}}" class="user-image img-circle elevation-2"
                     alt="User Image">
-                <span class="d-none d-md-inline">{{Auth::user()->username}}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <!-- User image -->
-                <li class="user-header bg-primary">
-                    <img src="{{ asset('assets//dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
-
-                    <p>
-                        Alexander Pierce - Web Developer
+                <li class="user-header" style="background-color: rgb(169, 41, 219)">
+                    <img src="{{ asset('assets//dist/img/hijab.png')}}" class="img-circle elevation-2" alt="User Image">
+                    <p style="color: white">
+                        {{ Auth::user()->name }}
                     </p>
+                    <span style="color: white">{{ Auth::user()->level }}</span>
                 </li>
 
-                <!-- Menu Footer-->
                 <li class="user-footer">
-                    {{-- <a href="#" class="btn btn-default btn-flat float-right">Log out</a> --}}
                     <form action="{{ route('logout')}}" method="POST">
                        @csrf
                            <Button type="submit" class="btn btn-default btn-flat float-right">Logout

@@ -47,15 +47,20 @@
     <div class="wrapper">
         @include('layouts.partials.header')
 
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar  elevation-4" style="background-color: white">
             <a href="index3.html" class="brand-link">
-                <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+                <img src="{{ asset('assets/dist/img/poltekgo.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Rusunawa</span>
+                <span class="brand-text font-weight-bold"
+                    style="color: black; font-size: 20px; text-transform: uppercase;">
+                    Rusunawa
+                </span>
+
             </a>
 
             @include('layouts.partials.sidebar')
         </aside>
+
 
         @yield('content')
 
