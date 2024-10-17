@@ -11,7 +11,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+        $penghuni = Penghuni::count();
+        $kamar = Kamar::count();
+        return view('home.index', compact('penghuni','kamar'));
     }
 
     /**
