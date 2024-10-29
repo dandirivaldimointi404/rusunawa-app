@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kamar;
+use App\Models\Penghuni;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
