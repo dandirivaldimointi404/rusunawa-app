@@ -49,7 +49,7 @@
                 <li class="nav-item">
                     <a href="{{ route('tagihanpenghuni.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-file-invoice-dollar" style="color: #ffffff;"></i>
-                        <pstyle="color: #ffffff;">Data Tagihan Penghuni</p>
+                        <p style="color: #ffffff;">Data Tagihan Penghuni</p>
                     </a>
                 </li>
             @endif
