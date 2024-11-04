@@ -2,14 +2,13 @@
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-header">Dashboard</li>
+            <li class="nav-item">
+                <a href="{{ route('home.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-home" style="color: #ffffff;"></i>
+                    <p style="color: #ffffff;">Beranda</p>
+                </a>
+            </li>
             @if (Auth::user()->level == 'admin')
-                <li class="nav-item">
-                    <a href="{{ route('home.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-home" style="color: #ffffff;"></i>
-                        <p style="color: #ffffff;">Beranda</p>
-                    </a>
-                </li>
-
                 <li class="nav-item">
                     <a href="{{ route('kamar.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-bed" style="color: #ffffff;"></i>

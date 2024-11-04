@@ -34,7 +34,7 @@
                                             <th>NIM</th>
                                             <th>Nama Penghuni</th>
                                             <th>Kamar</th>
-                                            <th>Alamat</th>
+                                            {{-- <th>Alamat</th> --}}
                                             {{-- <th>No Primadi</th> --}}
                                             <th>No Ortu</th>
                                             <th>Tanggal Masuk</th>
@@ -48,7 +48,7 @@
                                                 <td>{{ $item->user->username }}</td>
                                                 <td>{{ $item->nama_penghuni }}</td>
                                                 <td>{{ $item->kamar->nomor_kamar }}</td>
-                                                <td>{{ $item->alamat }}</td>
+                                                {{-- <td>{{ $item->alamat }}</td> --}}
                                                 {{-- <td>{{ $item->no_wa_pribadi }}</td> --}}
                                                 <td>{{ $item->no_wa_ortu }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($item->tgl_masuk)->format('d M Y H:i') }}</td>

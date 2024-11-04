@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Kamar extends Model
 {
-    // use HasFactory;
     protected $table = 'kamar';
 
     protected $fillable = [
@@ -16,4 +14,14 @@ class Kamar extends Model
         'kapasitas',
         'tarif',
     ];
+
+    public function penghuni()
+    {
+        return $this->hasMany(Penghuni::class);
+    }
+
+    public function penghuniCount()
+    {
+        return $this->penghuni()->count();
+    }
 }

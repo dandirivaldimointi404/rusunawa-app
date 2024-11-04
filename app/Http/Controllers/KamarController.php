@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kamar;
+use App\Models\Penghuni;
 use Illuminate\Http\Request;
 
 class KamarController extends Controller
@@ -12,8 +13,10 @@ class KamarController extends Controller
      */
     public function index()
     {
-        $kamar = Kamar::all();
-        return view('kamar.index', compact('kamar'));
+        // $kamar = Kamar::all();
+        $penghuni = Penghuni::with('kamar')->get();
+        $kamar = Kamar::withCount('penghuni')->get();
+        return view('kamar.index', compact('kamar','penghuni'));
     }
 
     /**
@@ -29,7 +32,23 @@ class KamarController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validatedData = $<?php
+
+        namespace App\Http\Controllers;
+        
+        use App\Models\Kamar;
+        use Illuminate\Http\Request;
+        
+        class KamarController extends Controller
+        {
+            /**
+        …     */
+            public function destroy(string $id)
+            {
+                //
+            }
+        }
+        request->validate([
             'nomor_kamar' => '',
             'lantai' => '',
             'kapasitas' => '',

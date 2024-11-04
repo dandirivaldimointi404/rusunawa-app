@@ -27,7 +27,8 @@ class PenghuniController extends Controller
      */
     public function create()
     {
-        $kamar = Kamar::all();
+        // $kamar = Kamar::all();
+        $kamar = Kamar::withCount('penghuni')->get();
         return view('penghuni.create', compact('kamar'));
     }
 
