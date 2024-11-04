@@ -15,12 +15,12 @@ class TagihanController extends Controller
      * Display a listing of the resource.
      */
 
-    protected $twilio;
+    // protected $twilio;
 
-    public function __construct(TwilioService $twilio)
-    {
-        $this->twilio = $twilio;
-    }
+    // public function __construct(TwilioService $twilio)
+    // {
+    //     $this->twilio = $twilio;
+    // }
 
     public function index()
     {
