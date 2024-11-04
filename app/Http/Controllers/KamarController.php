@@ -32,23 +32,7 @@ class KamarController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $<?php
-
-        namespace App\Http\Controllers;
-        
-        use App\Models\Kamar;
-        use Illuminate\Http\Request;
-        
-        class KamarController extends Controller
-        {
-            /**
-        …     */
-            public function destroy(string $id)
-            {
-                //
-            }
-        }
-        request->validate([
+        $validatedData = $request->validate([
             'nomor_kamar' => '',
             'lantai' => '',
             'kapasitas' => '',
