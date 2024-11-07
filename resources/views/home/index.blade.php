@@ -63,7 +63,7 @@
             <h2>Galeri<h2>
                     <div class="container p-3">
                         <img src="{{ asset('assets/foto5.jpeg') }}" class="img-fluid rounded shadow-sm"
-                            style="width: 100%; height: 200px; object-fit: cover;">
+                            style="width: 100%;">
 
                     </div>
                     <div class="row">
