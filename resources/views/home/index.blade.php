@@ -60,29 +60,30 @@
 
         <!-- Gambar-gambar di bawah -->
         <div class="container-fluid">
-            <div class="container p-3">
-                <img src="{{ asset('assets/foto5.jpeg') }}" class="img-fluid rounded shadow-sm"
-                    style="width: 100%; height: 200px; object-fit: cover;">
+            <h2>Galeri<h2>
+                    <div class="container p-3">
+                        <img src="{{ asset('assets/foto5.jpeg') }}" class="img-fluid rounded shadow-sm"
+                            style="width: 100%; height: 200px; object-fit: cover;">
 
-            </div>
-            <div class="row">
-                <!-- Gambar 1 -->
-                <div class="col-md-6 col-12 mb-3">
-                    <img src="{{ asset('assets/foto1.jpeg') }}" class="img-fluid rounded shadow-sm" alt="Gambar 1">
-                </div>
-                <!-- Gambar 2 -->
-                <div class="col-md-6 col-12 mb-3">
-                    <img src="{{ asset('assets/foto2.jpeg') }}" class="img-fluid rounded shadow-sm" alt="Gambar 2">
-                </div>
-                <!-- Gambar 3 -->
-                <div class="col-md-6 col-12 mb-3">
-                    <img src="{{ asset('assets/foto3.jpeg') }}" class="img-fluid rounded shadow-sm" alt="Gambar 3">
-                </div>
-                <!-- Gambar 4 -->
-                <div class="col-md-6 col-12 mb-3">
-                    <img src="{{ asset('assets/foto4.jpeg') }}" class="img-fluid rounded shadow-sm" alt="Gambar 4">
-                </div>
-            </div>
+                    </div>
+                    <div class="row">
+                        <!-- Gambar 1 -->
+                        <div class="col-md-6 col-12 mb-3">
+                            <img src="{{ asset('assets/foto1.jpeg') }}" class="img-fluid rounded shadow-sm" alt="Gambar 1">
+                        </div>
+                        <!-- Gambar 2 -->
+                        <div class="col-md-6 col-12 mb-3">
+                            <img src="{{ asset('assets/foto2.jpeg') }}" class="img-fluid rounded shadow-sm" alt="Gambar 2">
+                        </div>
+                        <!-- Gambar 3 -->
+                        <div class="col-md-6 col-12 mb-3">
+                            <img src="{{ asset('assets/foto3.jpeg') }}" class="img-fluid rounded shadow-sm" alt="Gambar 3">
+                        </div>
+                        <!-- Gambar 4 -->
+                        <div class="col-md-6 col-12 mb-3">
+                            <img src="{{ asset('assets/foto4.jpeg') }}" class="img-fluid rounded shadow-sm" alt="Gambar 4">
+                        </div>
+                    </div>
         </div>
     </div>
 @endsection
