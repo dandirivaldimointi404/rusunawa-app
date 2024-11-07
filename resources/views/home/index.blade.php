@@ -17,7 +17,6 @@
                 </div>
                 <!-- Banner Image -->
                 {{-- <img src="{{ asset('assets/foto5.jpeg') }}" class="img-fluid rounded shadow-sm" style="height: 250px; object-fit: cover;"> --}}
-                <img src="{{ asset('assets/foto5.jpeg') }}" class="img-fluid rounded shadow-sm" style="width: 100%; height: 200px; object-fit: cover;">
 
             </div>
         </div>
@@ -36,7 +35,8 @@
                             <div class="icon">
                                 <i class="ion ion-cube"></i>
                             </div>
-                            <a href="{{ route('kamar.index') }}" class="small-box-footer text-white">Cek Kamar Kosong <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ route('kamar.index') }}" class="small-box-footer text-white">Cek Kamar Kosong <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -60,6 +60,11 @@
 
         <!-- Gambar-gambar di bawah -->
         <div class="container-fluid">
+            <div class="container p-3">
+                <img src="{{ asset('assets/foto5.jpeg') }}" class="img-fluid rounded shadow-sm"
+                    style="width: 100%; height: 200px; object-fit: cover;">
+
+            </div>
             <div class="row">
                 <!-- Gambar 1 -->
                 <div class="col-md-6 col-12 mb-3">
