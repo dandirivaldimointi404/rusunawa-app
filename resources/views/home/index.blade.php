@@ -91,6 +91,15 @@
                         <div class="col-md-6 col-12 mb-3">
                             <img src="{{ asset('assets/foto7.jpeg') }}" class="img-fluid rounded shadow-sm" alt="Gambar 4">
                         </div>
+
+
+                        <div class="col-md-6 col-12 mb-3">
+                            <img src="{{ asset('assets/foto8.jpeg') }}" class="img-fluid rounded shadow-sm" alt="Gambar 3">
+                        </div>
+                        <!-- Gambar 4 -->
+                        <div class="col-md-6 col-12 mb-3">
+                            <img src="{{ asset('assets/foto9.jpeg') }}" class="img-fluid rounded shadow-sm" alt="Gambar 4">
+                        </div>
                     </div>
         </div>
     </div>

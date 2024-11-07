@@ -67,11 +67,21 @@
                                             @enderror
                                         </div>
                                         <div class="form-group col-lg-6">
-                                            <label for="tarif">Tarif Kamar</label>
+                                            <label for="tarif">Tarif Kamar Per Orang</label>
                                             <input type="number" class="form-control" @error('tarif') is-invalid @enderror"
-                                                id="tarif" name="tarif" placeholder="Masukan Tarif Kamar"
+                                                id="tarif" name="tarif" placeholder="Masukan Tarif Kamar Per Orang"
                                                 value="{{ old('tarif') }}">
                                             @error('tarif')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group col-lg-6">
+                                            <label for="total_tarif">Total Tarif Kamar</label>
+                                            <input type="number" class="form-control" @error('tarif') is-invalid @enderror"
+                                                id="total_tarif" name="total_tarif" placeholder="Masukan Total Tarif Kamar"
+                                                value="{{ old('total_tarif') }}">
+                                            @error('total_tarif')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>

@@ -154,30 +154,14 @@ class PenghuniController extends Controller
         return redirect()->route('penghuni.index')->with('success', 'Data penghuni telah diperbarui.');
     }
 
-
-
-
-
-
-
-
-
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        // Mencari penghuni berdasarkan ID
         $penghuni = Penghuni::findOrFail($id);
-        
-        // Menghapus penghuni
         $penghuni->delete();
-        
-        // Memberikan flash message (opsional)
         session()->flash('success', 'Penghuni berhasil dihapus.');
-    
-        // Redirect ke halaman index atau halaman lain
         return redirect()->route('penghuni.index');
     }
-    
 }

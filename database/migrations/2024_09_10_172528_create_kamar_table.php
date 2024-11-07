@@ -17,6 +17,7 @@ return new class extends Migration
             $table->float('lantai');
             $table->float('kapasitas');
             $table->float('tarif');
+            $table->float('total_tarif');
             $table->timestamps();
         });
     }

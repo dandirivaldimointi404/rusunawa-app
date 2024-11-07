@@ -37,6 +37,7 @@ class KamarController extends Controller
             'lantai' => '',
             'kapasitas' => '',
             'tarif' => '',
+            'total_tarif' => '',
         ]);
 
         Kamar::create($validatedData);
@@ -71,6 +72,7 @@ class KamarController extends Controller
             'lantai' => '',
             'kapasitas' => '',
             'tarif' => '',
+            'total_tarif' => '',
         ]);
 
         $kamar = Kamar::findOrFail($id);
@@ -84,6 +86,9 @@ class KamarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $kamar = Kamar::findOrFail($id);
+        $kamar->delete();
+        return redirect()->route('kamar.index')->with('success', 'Kamar berhasil dihapus');
     }
+    
 }

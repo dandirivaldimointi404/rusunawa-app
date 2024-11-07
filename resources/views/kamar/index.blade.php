@@ -36,7 +36,8 @@
                                             <th>Lantai</th>
                                             <th>Kapasitas</th>
                                             <th>Sudah Terisi</th>
-                                            <th>Tarif</th>
+                                            <th>Tarif/Orang</th>
+                                            <th>Total Tarif</th>
                                             @if (Auth::user()->level == 'admin')
                                                 <th>Aksi</th>
                                             @endif
@@ -60,6 +61,7 @@
                                                     @endif
                                                 </td>
                                                 <td>{{ 'Rp ' . number_format($item->tarif, 0, ',', '.') }}</td>
+                                                <td>{{ 'Rp ' . number_format($item->total_tarif, 0, ',', '.') }}</td>
 
                                                 @if (Auth::user()->level == 'admin')
                                                     <td class="text-center">

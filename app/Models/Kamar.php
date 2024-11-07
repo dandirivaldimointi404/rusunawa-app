@@ -13,6 +13,7 @@ class Kamar extends Model
         'lantai',
         'kapasitas',
         'tarif',
+        'total_tarif',
     ];
 
     public function penghuni()
