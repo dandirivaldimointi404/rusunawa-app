@@ -15,14 +15,50 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+    <style>
+        body {
+            margin: 0;Gorontalo - Foto Profil.JPG
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("{{ asset('assets/Gorontalo - Foto Profil.JPG') }}");
+            background-size: cover;
+            background-position: center bottom;
+            background-attachment: fixed;
+            opacity: 0.5; 
+            z-index: -1;
+        }
+
+        .login-box {
+            margin-top: 50px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .card {
+            opacity: 0.9; 
+        }
+    </style>
 </head>
 
 <body class="hold-transition login-page">
+    <div class="background"></div>
+
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="#" class="h1"><b>Login Admin</b></a>
+                <img src="{{ asset('assets/poltekgo.png') }}" width="150" height="auto">
+                <h2><b>Login Admin</b></h2>
             </div>
             <div class="card-body">
 
