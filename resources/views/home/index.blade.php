@@ -62,7 +62,7 @@
         <div class="container-fluid">
             <h2>Galeri<h2>
                     <div class="container p-3">
-                        <img src="{{ asset('assets/foto5.jpeg') }}" class="img-fluid rounded shadow-sm"
+                        <img src="{{ asset('assets/foto5i.jpeg') }}" class="img-fluid rounded shadow-sm"
                             style="width: 100%;">
 
                     </div>
@@ -82,6 +82,14 @@
                         <!-- Gambar 4 -->
                         <div class="col-md-6 col-12 mb-3">
                             <img src="{{ asset('assets/foto4.jpeg') }}" class="img-fluid rounded shadow-sm" alt="Gambar 4">
+                        </div>
+
+                        <div class="col-md-6 col-12 mb-3">
+                            <img src="{{ asset('assets/foto6.jpeg') }}" class="img-fluid rounded shadow-sm" alt="Gambar 3">
+                        </div>
+                        <!-- Gambar 4 -->
+                        <div class="col-md-6 col-12 mb-3">
+                            <img src="{{ asset('assets/foto7.jpeg') }}" class="img-fluid rounded shadow-sm" alt="Gambar 4">
                         </div>
                     </div>
         </div>
