@@ -167,6 +167,17 @@ class PenghuniController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Mencari penghuni berdasarkan ID
+        $penghuni = Penghuni::findOrFail($id);
+        
+        // Menghapus penghuni
+        $penghuni->delete();
+        
+        // Memberikan flash message (opsional)
+        session()->flash('success', 'Penghuni berhasil dihapus.');
+    
+        // Redirect ke halaman index atau halaman lain
+        return redirect()->route('penghuni.index');
     }
+    
 }
