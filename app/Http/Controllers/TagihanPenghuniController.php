@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tagihan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TagihanPenghuniController extends Controller
 {
@@ -12,10 +13,17 @@ class TagihanPenghuniController extends Controller
      */
     public function index()
     {
-        $tagihan = Tagihan::with('penghuni')->get();
+        $user = Auth::user();
 
-    return view('tagihanpenghuni.index', compact('tagihan'));
+        $tagihan = Tagihan::with('penghuni')
+            ->whereHas('penghuni', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })
+            ->get();
+
+        return view('tagihanpenghuni.index', compact('tagihan'));
     }
+
 
     /**
      * Show the form for creating a new resource.

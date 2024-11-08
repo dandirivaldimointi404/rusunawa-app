@@ -34,9 +34,9 @@
                                             <th>Nomor kamar</th>
                                             <th>Penghuni</th>
                                             <th>Tanggal Pembayaran</th>
-                                            <th>Tagihan</th>
+                                            {{-- <th>Tagihan</th> --}}
                                             <th>Status</th>
-                                            <th>Aksi</th>
+                                            {{-- <th>Aksi</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -45,10 +45,10 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>Lantai {{ $item->penghuni->kamar->lantai }} | Kamar {{ $item->penghuni->kamar->nomor_kamar }}</td>
                                                 <td>{{ $item->penghuni->nama_penghuni }}</td>
-                                                <td>{{ $item->tgl_pembayaran ? $item->tgl_pembayaran->format('d-m-Y') : 'Belum Dibayar' }}</td>
+                                                {{-- <td>{{ $item->tgl_pembayaran ? $item->tgl_pembayaran->format('d-m-Y') : 'Belum Dibayar' }}</td> --}}
                                                 <td>Rp {{ number_format($item->total_tagihan, 0, ',', '.') }}</td>
                                                 <td>{{ $item->status }}</td>
-
+{{-- 
                                                 <td class="text-center">
                                                     <form action="{{ route('tagihan.destroy', $item->id) }}" method="POST"
                                                         class="delete-form">
@@ -57,9 +57,8 @@
                                                                 class="ti ti-edit"></i>Edit</a>
                                                         @csrf
                                                         @method('DELETE')
-                                                        {{--   --}}
                                                     </form>
-                                                </td>
+                                                </td> --}}
                                             </tr>
                                         @endforeach
                                     </tbody>
