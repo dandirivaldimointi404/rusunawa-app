@@ -33,7 +33,7 @@
                                             <th>No</th>
                                             <th>Nomor kamar</th>
                                             <th>Penghuni</th>
-                                            <th>Tanggal Pembayaran</th>
+                                            <th>Total Pembayaran</th>
                                             {{-- <th>Tagihan</th> --}}
                                             <th>Status</th>
                                             {{-- <th>Aksi</th> --}}
